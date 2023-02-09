@@ -1,4 +1,7 @@
-﻿using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
+﻿using VkusProject.Data.interfaces;
+using VkusProject.Data.mocks;
+using Microsoft.AspNetCore.Mvc;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace VkusProject
 {
@@ -6,8 +9,17 @@ namespace VkusProject
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IAllBludos, MockBludos>();
+            //для объединения интерфейса и класса который реализует интерфейс
+            //интерфейс IAllBludos реализуется в классe MockBludos
+
+            services.AddTransient<IBludosCategory, MockCategory>();
+            //интерфейс IBludosCategory реализуется в классe MockBludos
+
             services.AddMvc();
         }
+
+
 
         public void Configure(ApplicationBuilder app, IHostingEnvironment env)
         {
