@@ -1,22 +1,8 @@
-﻿@using VkusProject.Data.Models  
-@model IEnumerable<Bludo>       //собачка означает что открывается C# код
-
-@{                      //Между собачкой и ковычкой не должно быть пробела, или будет ошибка!! 
-                    
-    Layout = null;  //означает, что главного шаблона нет
-}
-
-<!DOCKTYPE html>
-
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width" />
-        <title>List</title>
-    </head>
-    <body>
-        <h2>Все блюда</h2>
+﻿
+        <h1>Все блюда</h1>
+        <h3>@Model.currCategory</h3>                     
         @{
-            foreach (var bludo in Model)  //Model - глобальный объект
+            foreach (var bludo in Model.allBludos)  //Model - глобальный объект
             {
                 <div>
                 <h2>Название: @bludo.name</h2>
@@ -24,5 +10,4 @@
                 </div>
             }
         }
-    </body>
-</html>
+ 
